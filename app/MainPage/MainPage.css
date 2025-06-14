@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.test {
+  @apply font-ubuntu text-8xl;
+}
