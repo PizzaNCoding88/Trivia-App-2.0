@@ -1,5 +1,5 @@
 @import "tailwindcss";
 
 .test {
-  @apply text-8xl;
+  @apply text-red-500 text-8xl;
 }

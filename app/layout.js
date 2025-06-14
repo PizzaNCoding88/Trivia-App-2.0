@@ -1,4 +1,11 @@
 import "./globals.css";
+import { Ubuntu } from "next/font/google";
+
+const ubuntu = Ubuntu({
+  subsets: ["latin"],
+  variable: "--font-main",
+  weight: ["300", "400", "500", "700"],
+});
 
 export const metadata = {
   title: "Trivia App 2.0",
@@ -7,7 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={ubuntu.variable}>
       <body>{children}</body>
     </html>
   );
