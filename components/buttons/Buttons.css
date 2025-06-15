@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.button {
+  @apply bg-green-300 px-8 py-2 rounded-lg text-white;
+}

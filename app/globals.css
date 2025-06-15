@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --main-bg: #232325;
+  --secondary-bg: #121212;
+  --secondary-font: #a2a2a2;
 }
 
 @theme inline {
@@ -20,7 +23,21 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--main-bg);
   font-family: var(--font-main);
+}
+
+.central-part {
+  background: var(--secondary-bg);
+}
+
+.central-part p,
+.footer {
+  color: var(--secondary-font);
+}
+
+.category-selector,
+.difficulty-selector,
+.questions-selector {
+  background: var(--main-bg);
 }

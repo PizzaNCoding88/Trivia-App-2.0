@@ -1,5 +1,66 @@
 @import "tailwindcss";
 
-.test {
-  @apply text-red-500 text-8xl;
+.container {
+  @apply flex flex-col justify-between mx-auto py-10 w-[85%] h-screen;
+}
+
+.image-container {
+  @apply w-full;
+}
+
+.logo {
+  @apply mx-auto;
+}
+
+.central-part {
+  @apply px-5 py-5 rounded-lg w-full h-[80%] text-center;
+}
+
+.central-part h1 {
+  @apply font-bold text-white text-xl;
+}
+
+.central-part p {
+  @apply text-sm;
+}
+
+.category-container,
+.difficulty-container,
+.questions-container {
+  @apply flex flex-col gap-1 text-left;
+}
+
+.category-container p,
+.difficulty-container p,
+.questions-container p {
+  @apply font-bold text-white;
+}
+
+.category-selector {
+  @apply rounded-lg w-full h-[10rem];
+}
+
+.difficulty-selector,
+.questions-selector {
+  @apply rounded-lg w-full h-[3rem];
+}
+
+.questions-selector {
+  @apply flex justify-between items-center text-white;
+}
+
+.lateral-buttons {
+  @apply flex justify-center items-center bg-[#3B3B3C] h-full aspect-square;
+}
+
+.plus {
+  @apply rounded-tl-xl rounded-bl-xl;
+}
+
+.minus {
+  @apply rounded-tr-xl rounded-br-xl;
+}
+
+.footer {
+  @apply text-center;
 }
