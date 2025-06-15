@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .container {
-  @apply flex flex-col justify-between mx-auto py-10 w-[85%] h-screen;
+  @apply flex flex-col justify-between mx-auto py-10 w-[85%] h-dvh;
 }
 
 .image-container {
