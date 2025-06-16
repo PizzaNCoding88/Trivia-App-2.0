@@ -3,6 +3,7 @@ import "./MainPage.css";
 import Image from "next/image";
 import Logo from "../../public/assets/images/logo.png";
 import Buttons from "@/components/buttons/Buttons";
+import { categories } from "@/public/assets/categories/categories";
 
 const MainPage = () => {
   return (
@@ -19,7 +20,11 @@ const MainPage = () => {
         </div>
         <div className="category-container">
           <p>Select Category</p>
-          <div className="category-selector"></div>
+          <div className="category-selector">
+            {categories.map((category, index) => (
+              <Buttons key={index} name={category.name} textSize="sm"></Buttons>
+            ))}
+          </div>
         </div>
         <div className="difficulty-container">
           <p>Difficulty Level</p>

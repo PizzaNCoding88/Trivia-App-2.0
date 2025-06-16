@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .container {
-  @apply flex flex-col justify-between mx-auto py-10 w-[85%] h-dvh;
+  @apply flex flex-col justify-between mx-auto py-10 w-[85%] h-full;
 }
 
 .image-container {
@@ -13,7 +13,7 @@
 }
 
 .central-part {
-  @apply px-5 py-5 rounded-lg w-full h-[80%] text-center;
+  @apply flex flex-col justify-between px-5 py-5 rounded-lg w-full h-[80%] text-center;
 }
 
 .central-part h1 {
@@ -37,7 +37,7 @@
 }
 
 .category-selector {
-  @apply rounded-lg w-full h-[10rem];
+  @apply gap-16 grid grid-cols-2 grid-rows-3 px-2 py-2 rounded-lg w-full h-[10rem] overflow-hidden;
 }
 
 .difficulty-selector,

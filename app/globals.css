@@ -25,6 +25,7 @@
 body {
   background: var(--main-bg);
   font-family: var(--font-main);
+  height: 100dvh;
 }
 
 .central-part {

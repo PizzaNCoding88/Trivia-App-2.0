@@ -3,7 +3,7 @@ import MainPage from "./MainPage/MainPage";
 
 export default function Home() {
   return (
-    <div>
+    <div className="h-[100dvh]">
       <MainPage />
     </div>
   );
