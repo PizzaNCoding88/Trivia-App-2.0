@@ -66,6 +66,10 @@
   @apply rounded-tr-xl rounded-br-xl;
 }
 
+.start-button-container {
+  @apply flex justify-center;
+}
+
 .footer {
   @apply text-center;
 }
