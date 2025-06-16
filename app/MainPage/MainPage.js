@@ -22,7 +22,13 @@ const MainPage = () => {
           <p>Select Category</p>
           <div className="category-selector">
             {categories.map((category, index) => (
-              <Buttons key={index} name={category.name} textSize="xs"></Buttons>
+              <Buttons
+                key={index}
+                name={category.name}
+                textSize="xs"
+                start={category.base}
+                finish={category.dark}
+              ></Buttons>
             ))}
           </div>
         </div>

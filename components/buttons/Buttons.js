@@ -9,8 +9,10 @@ const textSizeClasses = {
   xl: "text-xl",
 };
 const Buttons = (props) => {
-  const { name, click, textSize } = props;
-  const className = `button ${textSizeClasses[textSize] || ""}`;
+  const { name, click, textSize, start, finish } = props;
+  const className = `button bg-gradient-to-r from-[${start}] to-[${finish}] ${
+    textSizeClasses[textSize] || ""
+  }`;
   return (
     <button className={className} onClick={click}>
       {name}
