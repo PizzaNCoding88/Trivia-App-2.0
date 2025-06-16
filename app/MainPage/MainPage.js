@@ -50,7 +50,11 @@ const MainPage = () => {
         </div>
         <div className="difficulty-container">
           <p>Difficulty Level</p>
-          <div className="difficulty-selector"></div>
+          <div className="difficulty-selector">
+            <Buttons name="Easy" textSize="xs" />
+            <Buttons name="Medium" textSize="xs" />
+            <Buttons name="Hard" textSize="xs" />
+          </div>
         </div>
         <div className="questions-container">
           <p>
@@ -63,7 +67,7 @@ const MainPage = () => {
             >
               -
             </button>
-            <div>{questionsNumber}</div>
+            <div className="questions">{questionsNumber}</div>
             <button
               className="lateral-buttons plus"
               onClick={increaseQuestions}

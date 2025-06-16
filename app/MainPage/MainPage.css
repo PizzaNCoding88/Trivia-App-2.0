@@ -51,12 +51,20 @@
   @apply rounded-lg w-full h-[3rem];
 }
 
+.difficulty-selector {
+  @apply flex justify-between items-center px-5;
+}
+
 .questions-container p span {
   @apply text-[0.65rem];
 }
 
 .questions-selector {
   @apply flex justify-between items-center text-white;
+}
+
+.questions {
+  @apply font-bold;
 }
 
 .lateral-buttons {

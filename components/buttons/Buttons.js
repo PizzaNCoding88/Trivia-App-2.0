@@ -14,7 +14,7 @@ const Buttons = (props) => {
   const gradients = {
     background: `linear-gradient(to right, ${start}, ${finish})`,
   };
-  const className = `button ${textSizeClasses[textSize] || ""}`;
+  const className = `button ${textSizeClasses[textSize] || ""} `;
   return (
     <button className={className} style={gradients} onClick={click}>
       {name}
