@@ -42,3 +42,7 @@ body {
 .questions-selector {
   background: var(--main-bg);
 }
+
+.questions-container p span {
+  color: var(--secondary-font);
+}

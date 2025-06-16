@@ -1,11 +1,27 @@
+"use client";
 import React from "react";
 import "./MainPage.css";
 import Image from "next/image";
 import Logo from "../../public/assets/images/logo.png";
 import Buttons from "@/components/buttons/Buttons";
 import { categories } from "@/public/assets/categories/categories";
+import { useState } from "react";
 
 const MainPage = () => {
+  const [questionsNumber, setQuestionsNumber] = useState(0);
+
+  function increaseQuestions() {
+    if (questionsNumber >= 0 && questionsNumber < 50) {
+      setQuestionsNumber(questionsNumber + 1);
+    }
+  }
+
+  function decreaseQuestions() {
+    if (questionsNumber > 0) {
+      setQuestionsNumber(questionsNumber - 1);
+    }
+  }
+
   return (
     <div className="container">
       <div className="image-container">
@@ -37,11 +53,23 @@ const MainPage = () => {
           <div className="difficulty-selector"></div>
         </div>
         <div className="questions-container">
-          <p>Number of questions</p>
+          <p>
+            Number of questions <span>(Max. 50)</span>
+          </p>
           <div className="questions-selector">
-            <button className="lateral-buttons plus">+</button>
-            <div>Questions</div>
-            <button className="lateral-buttons minus">-</button>
+            <button
+              className="lateral-buttons minus"
+              onClick={decreaseQuestions}
+            >
+              -
+            </button>
+            <div>{questionsNumber}</div>
+            <button
+              className="lateral-buttons plus"
+              onClick={increaseQuestions}
+            >
+              +
+            </button>
           </div>
         </div>
         <div className="start-button-container">

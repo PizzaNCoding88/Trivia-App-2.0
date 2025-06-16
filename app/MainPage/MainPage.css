@@ -51,6 +51,10 @@
   @apply rounded-lg w-full h-[3rem];
 }
 
+.questions-container p span {
+  @apply text-[0.65rem];
+}
+
 .questions-selector {
   @apply flex justify-between items-center text-white;
 }
@@ -59,11 +63,11 @@
   @apply flex justify-center items-center bg-[#3B3B3C] h-full aspect-square;
 }
 
-.plus {
+.minus {
   @apply rounded-tl-xl rounded-bl-xl;
 }
 
-.minus {
+.plus {
   @apply rounded-tr-xl rounded-br-xl;
 }
 
