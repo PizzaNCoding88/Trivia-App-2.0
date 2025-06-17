@@ -44,13 +44,13 @@ export const categories = [
   { id: 30, name: "Science: Gadgets", base: "#a9a9a9", dark: "#574a4a" },
   {
     id: 31,
-    name: "Entertainment: Japanese Anime & Manga",
+    name: "Japanese Anime & Manga",
     base: "#ff69b4",
     dark: "#781a49",
   },
   {
     id: 32,
-    name: "Entertainment: Cartoon & Animations",
+    name: "Cartoon & Animations",
     base: "#1e90ff",
     dark: "#053a6e",
   },

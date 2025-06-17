@@ -37,7 +37,7 @@
 }
 
 .category-selector {
-  @apply gap-2 grid grid-cols-2 px-5 py-4 rounded-lg w-full h-[10rem] overflow-y-auto;
+  @apply gap-3 grid grid-cols-2 px-5 py-4 rounded-lg w-full h-[10rem] overflow-y-auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -53,6 +53,21 @@
 
 .difficulty-selector {
   @apply flex justify-between items-center px-5;
+}
+
+.difficulty-selector button {
+  @apply py-2 rounded-xl w-[30%] text-white text-sm;
+}
+
+.easy {
+  @apply bg-gradient-to-r from-[#3cb44b] to-[#1b7627];
+}
+
+.medium {
+  @apply bg-gradient-to-r from-[#ffe119] to-[#978616];
+}
+.hard {
+  @apply bg-gradient-to-r from-[#e6194b] to-[#720924];
 }
 
 .questions-container p span {
@@ -84,5 +99,5 @@
 }
 
 .footer {
-  @apply text-center;
+  @apply text-[0.5rem] text-center;
 }

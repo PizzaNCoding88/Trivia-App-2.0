@@ -51,9 +51,9 @@ const MainPage = () => {
         <div className="difficulty-container">
           <p>Difficulty Level</p>
           <div className="difficulty-selector">
-            <Buttons name="Easy" textSize="xs" />
-            <Buttons name="Medium" textSize="xs" />
-            <Buttons name="Hard" textSize="xs" />
+            <button className="easy">Easy</button>
+            <button className="medium">Medium</button>
+            <button className="hard">Hard</button>
           </div>
         </div>
         <div className="questions-container">
@@ -77,7 +77,13 @@ const MainPage = () => {
           </div>
         </div>
         <div className="start-button-container">
-          <Buttons name="start" />
+          <Buttons
+            name="Start"
+            start="#3cb44b"
+            finish="#1b7627"
+            textSize="sm"
+            padding="3"
+          />
         </div>
       </div>
       <div className="footer">

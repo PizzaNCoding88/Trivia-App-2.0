@@ -10,11 +10,12 @@ const textSizeClasses = {
 };
 
 const Buttons = (props) => {
-  const { name, click, textSize, start, finish } = props;
+  const { name, click, textSize, start, finish, padding } = props;
   const gradients = {
     background: `linear-gradient(to right, ${start}, ${finish})`,
+    paddingInline: padding ? `${padding}rem` : undefined,
   };
-  const className = `button ${textSizeClasses[textSize] || ""} `;
+  const className = `button ${textSizeClasses[textSize] || ""}`;
   return (
     <button className={className} style={gradients} onClick={click}>
       {name}
