@@ -17,7 +17,7 @@
 }
 
 .central-part h1 {
-  @apply font-bold text-white text-xl;
+  @apply font-bold text-white text-3xl;
 }
 
 .central-part p {
