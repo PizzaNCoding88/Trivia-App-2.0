@@ -13,7 +13,7 @@
 }
 
 .central-part {
-  @apply flex flex-col justify-between px-5 py-5 rounded-lg w-full h-[80%] text-center;
+  @apply flex flex-col justify-between px-5 py-10 rounded-lg w-full h-[80%] text-center;
 }
 
 .central-part h1 {
