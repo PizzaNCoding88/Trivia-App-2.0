@@ -6,13 +6,17 @@ import Logo from "../../public/assets/images/logo.png";
 import Buttons from "@/components/buttons/Buttons";
 import { categories } from "@/public/assets/categories/categories";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useQuiz } from "../context/QuizContext";
 
 const MainPage = () => {
+  const router = useRouter();
   const [questionsNumber, setQuestionsNumber] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState();
   const [selectedDifficulty, setSelectedDifficulty] = useState();
   const [category, setCategory] = useState();
   const [difficulty, setDifficulty] = useState();
+  const [, setQuestions] = useQuiz();
 
   function increaseQuestions() {
     if (questionsNumber >= 0 && questionsNumber < 50) {
@@ -27,7 +31,7 @@ const MainPage = () => {
   }
 
   async function startGame(questionsNumber, category, difficulty) {
-    if (!questionsNumber) {
+    if (!questionsNumber || !category || !difficulty) {
       setQuestionsNumber(true);
     } else {
       const url = `https://opentdb.com/api.php?amount=${questionsNumber}&category=${category}&difficulty=${difficulty}&type=multiple`;
@@ -38,7 +42,7 @@ const MainPage = () => {
           throw new Error(`Response status: ${response.status}`);
         }
         const json = await response.json();
-        setQuestionsNumber(json);
+        setQuestions(json.results);
         router.push("/quiz");
       } catch (error) {
         console.error(error.message);

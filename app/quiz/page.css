@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+.top-section {
+  @apply flex justify-between items-center text-white;
+}
+
+.question-counter {
+  @apply text-red-500;
+}
+
+.category-display {
+  color: var(--secondary-font);
+}
+
+.timer {
+  background: var(--main-bg);
+  @apply px-3 py-1 rounded-full;
+}

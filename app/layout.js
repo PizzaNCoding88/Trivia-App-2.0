@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Ubuntu } from "next/font/google";
+import Providers from "./Providers";
 
 const ubuntu = Ubuntu({
   subsets: ["latin"],
@@ -15,7 +16,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={ubuntu.variable}>
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
