@@ -9,6 +9,10 @@ import { useState } from "react";
 
 const MainPage = () => {
   const [questionsNumber, setQuestionsNumber] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState();
+  const [selectedDifficulty, setSelectedDifficulty] = useState();
+  const [category, setCategory] = useState();
+  const [difficulty, setDifficulty] = useState();
 
   function increaseQuestions() {
     if (questionsNumber >= 0 && questionsNumber < 50) {
@@ -19,6 +23,26 @@ const MainPage = () => {
   function decreaseQuestions() {
     if (questionsNumber > 0) {
       setQuestionsNumber(questionsNumber - 1);
+    }
+  }
+
+  async function startGame(questionsNumber, category, difficulty) {
+    if (!questionsNumber) {
+      setQuestionsNumber(true);
+    } else {
+      const url = `https://opentdb.com/api.php?amount=${questionsNumber}&category=${category}&difficulty=${difficulty}&type=multiple`;
+      console.log(url);
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        setQuestionsNumber(json);
+        router.push("/quiz");
+      } catch (error) {
+        console.error(error.message);
+      }
     }
   }
 
@@ -44,6 +68,11 @@ const MainPage = () => {
                 textSize="xs"
                 start={category.base}
                 finish={category.dark}
+                selected={selectedCategory === index}
+                click={() => {
+                  setSelectedCategory(index);
+                  setCategory(category.id);
+                }}
               ></Buttons>
             ))}
           </div>
@@ -51,9 +80,45 @@ const MainPage = () => {
         <div className="difficulty-container">
           <p>Difficulty Level</p>
           <div className="difficulty-selector">
-            <button className="easy">Easy</button>
-            <button className="medium">Medium</button>
-            <button className="hard">Hard</button>
+            <button
+              className={`easy transition-all duration-100 ${
+                selectedDifficulty === "easy"
+                  ? "border-2 border-white"
+                  : " border-0 border-transparent"
+              }`}
+              onClick={() => {
+                setSelectedDifficulty("easy");
+                setDifficulty("easy");
+              }}
+            >
+              Easy
+            </button>
+            <button
+              className={`medium transition-all duration-100 ${
+                selectedDifficulty === "medium"
+                  ? "border-2 border-white"
+                  : " border-0 border-transparent"
+              }`}
+              onClick={() => {
+                setSelectedDifficulty("medium");
+                setDifficulty("medium");
+              }}
+            >
+              Medium
+            </button>
+            <button
+              className={`hard transition-all duration-100 ${
+                selectedDifficulty === "hard"
+                  ? "border-2 border-white"
+                  : " border-0 border-transparent"
+              }`}
+              onClick={() => {
+                setSelectedDifficulty("hard");
+                setDifficulty("hard");
+              }}
+            >
+              Hard
+            </button>
           </div>
         </div>
         <div className="questions-container">
@@ -83,6 +148,7 @@ const MainPage = () => {
             finish="#1b7627"
             textSize="sm"
             padding="3"
+            click={() => startGame(questionsNumber, category, difficulty)}
           />
         </div>
       </div>
