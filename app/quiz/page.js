@@ -19,10 +19,17 @@ const Quiz = () => {
           <div className="category-display">Film</div>
           <div className="timer">30s</div>
         </div>
-        <div className="middle-section"></div>
-        <div className="bottom-section"></div>
+        <div className="middle-section">
+          <p>Question</p>
+        </div>
+        <div className="bottom-section">
+          <button>Answer 1</button>
+          <button>Answer 2</button>
+          <button>Answer 3</button>
+          <button>Answer 4</button>
+        </div>
         <div className="button-container">
-          <button>start</button>
+          <button>Next Question</button>
         </div>
       </div>
       <div className="footer">

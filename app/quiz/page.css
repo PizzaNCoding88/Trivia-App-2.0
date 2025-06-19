@@ -16,3 +16,21 @@
   background: var(--main-bg);
   @apply px-3 py-1 rounded-full;
 }
+
+.middle-section {
+  background: var(--main-bg);
+  @apply mx-auto rounded-lg w-[80%] h-[40%];
+}
+
+.middle-section p {
+  @apply text-lg;
+}
+
+.bottom-section {
+  @apply flex flex-col justify-between gap-4;
+}
+
+.bottom-section button {
+  background: var(--main-bg);
+  @apply mx-auto py-1 rounded-lg w-[40%] text-white text-sm;
+}
