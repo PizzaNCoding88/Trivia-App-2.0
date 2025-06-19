@@ -15,7 +15,7 @@ const Quiz = () => {
       </div>
       <div className="central-part">
         <div className="top-section">
-          <div className="question-counter">1/5</div>
+          <div className="question-counter">1/{questions.length}</div>
           <div className="category-display">Film</div>
           <div className="timer">30s</div>
         </div>
