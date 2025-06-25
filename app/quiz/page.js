@@ -10,6 +10,8 @@ import { decodeHtml } from "../utils/decodeHTML";
 const Quiz = () => {
   const [questions] = useQuiz();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFinished, setIsFinished] = useState(false);
+  const [wrongAnswer, setWrongAnswer] = useState(false);
 
   if (!questions || questions.length === 0 || !questions[currentIndex]) {
     return <div>Loading...</div>;
@@ -36,8 +38,7 @@ const Quiz = () => {
         setWrongAnswer(true);
       }
     }
-    console.log(questions);
-    console.log(questions.correct_answer);
+    console.log(questions[currentIndex].correct_answer);
     return (
       <div className="container">
         <div className="image-container">
@@ -57,10 +58,11 @@ const Quiz = () => {
             <p>{decodeHtml(questions[currentIndex].question)}</p>
           </div>
           <div className="bottom-section">
-            <button>Answer 1</button>
-            <button>Answer 2</button>
-            <button>Answer 3</button>
-            <button>Answer 4</button>
+            {shuffledAnswers.map((answer, i) => (
+              <button onClick={() => handleAnswer(i)} key={i}>
+                {answer}
+              </button>
+            ))}
           </div>
           <div className="button-container">
             <button>Next Question</button>
