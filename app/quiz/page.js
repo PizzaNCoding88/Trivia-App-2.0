@@ -60,7 +60,7 @@ const Quiz = () => {
           <div className="bottom-section">
             {shuffledAnswers.map((answer, i) => (
               <button onClick={() => handleAnswer(i)} key={i}>
-                {answer}
+                {decodeHtml(answer)}
               </button>
             ))}
           </div>
