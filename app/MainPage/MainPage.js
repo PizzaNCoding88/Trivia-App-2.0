@@ -35,7 +35,7 @@ const MainPage = () => {
       setQuestionsNumber(true);
     } else {
       const url = `https://opentdb.com/api.php?amount=${questionsNumber}&category=${category}&difficulty=${difficulty}&type=multiple`;
-      console.log(url);
+      // console.log(url);
       try {
         const response = await fetch(url);
         if (!response.ok) {
