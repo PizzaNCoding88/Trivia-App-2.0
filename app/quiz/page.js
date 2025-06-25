@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import "./page.css";
 import Logo from "../../public/assets/images/logo.png";
@@ -12,6 +12,17 @@ const Quiz = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [wrongAnswer, setWrongAnswer] = useState(false);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [isCorrect, setIsCorrect] = useState(null);
+
+  const shuffledAnswers = useMemo(() => {
+    if (!questions || !questions[currentIndex]) return [];
+    const answers = [
+      ...questions[currentIndex].incorrect_answers,
+      questions[currentIndex].correct_answer,
+    ];
+    return shuffleArray(answers);
+  }, [questions, currentIndex]);
 
   if (!questions || questions.length === 0 || !questions[currentIndex]) {
     return <div>Loading...</div>;
@@ -25,19 +36,38 @@ const Quiz = () => {
     ];
     console.log(questions[currentIndex]);
 
-    const shuffledAnswers = shuffleArray(answers);
+    // const shuffledAnswers = shuffleArray(answers);
 
+    // function handleAnswer(i) {
+    //   if (shuffledAnswers[i] === quiz[currentIndex].correct_answer) {
+    //     if (currentIndex + 1 >= quiz.length) {
+    //       setIsFinished(true);
+    //     } else {
+    //       setCurrentIndex(currentIndex + 1);
+    //     }
+    //   } else {
+    //     setWrongAnswer(true);
+    //   }
+    // }
     function handleAnswer(i) {
+      setSelectedAnswer(i);
       if (shuffledAnswers[i] === quiz[currentIndex].correct_answer) {
-        if (currentIndex + 1 >= quiz.length) {
-          setIsFinished(true);
-        } else {
-          setCurrentIndex(currentIndex + 1);
-        }
+        setIsCorrect(true);
       } else {
-        setWrongAnswer(true);
+        setIsCorrect(false);
       }
     }
+
+    function handleNext() {
+      if (currentIndex + 1 >= quiz.length) {
+        setIsFinished(true);
+      } else {
+        setCurrentIndex(currentIndex + 1);
+        setSelectedAnswer(null);
+        setIsCorrect(null);
+      }
+    }
+
     console.log(questions[currentIndex].correct_answer);
     return (
       <div className="container">
@@ -59,13 +89,27 @@ const Quiz = () => {
           </div>
           <div className="bottom-section">
             {shuffledAnswers.map((answer, i) => (
-              <button onClick={() => handleAnswer(i)} key={i}>
+              <button
+                onClick={() => handleAnswer(i)}
+                key={i}
+                style={
+                  selectedAnswer === i
+                    ? isCorrect
+                      ? { backgroundColor: "green", color: "white" }
+                      : { backgroundColor: "red", color: "white" }
+                    : {}
+                }
+              >
                 {decodeHtml(answer)}
               </button>
             ))}
           </div>
           <div className="button-container">
-            <button>Next Question</button>
+            {selectedAnswer != null && (
+              <button onClick={() => handleNext()}>
+                {currentIndex + 1 >= quiz.length ? "Finish" : "Next Question"}
+              </button>
+            )}
           </div>
         </div>
         <div className="footer">

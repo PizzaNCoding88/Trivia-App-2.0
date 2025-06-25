@@ -19,7 +19,7 @@
 
 .middle-section {
   background: var(--main-bg);
-  @apply mx-auto rounded-lg w-[80%] h-[40%];
+  @apply flex items-center mx-auto px-2 rounded-lg w-[80%] h-[40%];
 }
 
 .middle-section p {
@@ -30,7 +30,12 @@
   @apply flex flex-col justify-between gap-4;
 }
 
-.bottom-section button {
+.bottom-section button,
+.button-container button {
   background: var(--main-bg);
-  @apply mx-auto py-1 rounded-lg w-[40%] text-white text-sm;
+  @apply mx-auto py-1 rounded-lg w-[40%] text-white text-sm cursor-pointer;
+}
+
+.button-container button {
+  @apply bg-blue-500;
 }
