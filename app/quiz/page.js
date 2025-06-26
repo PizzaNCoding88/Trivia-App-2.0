@@ -16,6 +16,7 @@ const Quiz = () => {
   const [isCorrect, setIsCorrect] = useState(null);
   const [disableButtons, setDisableButtons] = useState(false);
   const [timer, setTimer] = useState(30);
+  const [noQuestionSelected, setNoQuestionSelected] = useState(false);
 
   useEffect(() => {
     if (timer === 0) {
@@ -28,6 +29,10 @@ const Quiz = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, [timer]);
+
+  if (timer === 0 && selectedAnswer === null) {
+    setNoQuestionSelected(true);
+  }
 
   const shuffledAnswers = useMemo(() => {
     if (!questions || !questions[currentIndex]) return [];
@@ -77,6 +82,9 @@ const Quiz = () => {
 
     return (
       <div className="container">
+        {noQuestionSelected && (
+          <div className="text-9xl">No question selected</div>
+        )}
         <div className="image-container">
           <Image alt="logo" src={Logo} className="logo" />
         </div>

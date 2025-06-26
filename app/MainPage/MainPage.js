@@ -33,12 +33,15 @@ const MainPage = () => {
   async function startGame(questionsNumber, category, difficulty) {
     if (
       !questionsNumber ||
+      questionsNumber < 1 ||
       difficulty === undefined ||
       difficulty === null ||
       difficulty === "" ||
       category === undefined ||
-      category === null
+      category === null ||
+      category === ""
     ) {
+      alert("Select a parameter");
       setQuestionsNumber(true);
       return;
     }
