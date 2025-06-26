@@ -14,6 +14,7 @@ const Quiz = () => {
   const [wrongAnswer, setWrongAnswer] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
+  const [disableButtons, setDisableButtons] = useState(false);
 
   const shuffledAnswers = useMemo(() => {
     if (!questions || !questions[currentIndex]) return [];
@@ -36,20 +37,8 @@ const Quiz = () => {
     ];
     console.log(questions[currentIndex]);
 
-    // const shuffledAnswers = shuffleArray(answers);
-
-    // function handleAnswer(i) {
-    //   if (shuffledAnswers[i] === quiz[currentIndex].correct_answer) {
-    //     if (currentIndex + 1 >= quiz.length) {
-    //       setIsFinished(true);
-    //     } else {
-    //       setCurrentIndex(currentIndex + 1);
-    //     }
-    //   } else {
-    //     setWrongAnswer(true);
-    //   }
-    // }
     function handleAnswer(i) {
+      setDisableButtons(true);
       setSelectedAnswer(i);
       if (shuffledAnswers[i] === quiz[currentIndex].correct_answer) {
         setIsCorrect(true);
@@ -59,6 +48,7 @@ const Quiz = () => {
     }
 
     function handleNext() {
+      setDisableButtons(!disableButtons);
       if (currentIndex + 1 >= quiz.length) {
         setIsFinished(true);
       } else {
@@ -90,6 +80,7 @@ const Quiz = () => {
           <div className="bottom-section">
             {shuffledAnswers.map((answer, i) => (
               <button
+                disabled={disableButtons !== false}
                 onClick={() => handleAnswer(i)}
                 key={i}
                 style={
