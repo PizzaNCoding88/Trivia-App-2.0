@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import "./MainPage.css";
 import Image from "next/image";
 import Logo from "../../public/assets/images/logo.png";

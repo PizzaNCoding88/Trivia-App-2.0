@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import "./page.css";
 import Logo from "../../public/assets/images/logo.png";
@@ -15,6 +15,19 @@ const Quiz = () => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [disableButtons, setDisableButtons] = useState(false);
+  const [timer, setTimer] = useState(30);
+
+  useEffect(() => {
+    if (timer === 0) {
+      setDisableButtons(true);
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setTimer((prev) => prev - 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [timer]);
 
   const shuffledAnswers = useMemo(() => {
     if (!questions || !questions[currentIndex]) return [];
@@ -49,8 +62,10 @@ const Quiz = () => {
 
     function handleNext() {
       setDisableButtons(!disableButtons);
+      setTimer(30);
       if (currentIndex + 1 >= quiz.length) {
         setIsFinished(true);
+        setTimer(0);
       } else {
         setCurrentIndex(currentIndex + 1);
         setSelectedAnswer(null);
@@ -59,6 +74,7 @@ const Quiz = () => {
     }
 
     console.log(questions[currentIndex].correct_answer);
+
     return (
       <div className="container">
         <div className="image-container">
@@ -72,7 +88,7 @@ const Quiz = () => {
             <div className="category-display">
               {questions[currentIndex].category}
             </div>
-            <div className="timer">30s</div>
+            <div className="timer">{timer}s</div>
           </div>
           <div className="middle-section">
             <p>{decodeHtml(questions[currentIndex].question)}</p>
