@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+.container {
+  @apply flex flex-col justify-between mx-auto py-10 w-[85%] h-full;
+}
+.central-part-score {
+  @apply flex flex-col  px-5 py-10 rounded-lg w-full h-[80%] text-center;
+}
+.image-container {
+  @apply w-full;
+}
+
+.trophy-container {
+  @apply flex justify-center items-center;
+}
+
+.trophy{
+  @apply w-15 aspect-auto;
+}
+.completed h1{
+    @apply font-bold text-white text-2xl;
+}
+
+.completed p{
+    @apply text-sm ;
+}
+
+.score-container {
+    @apply flex items-center justify-center ;
+}
+
+.score p{
+    @apply text-white text-2xl
+}
+
+.score{
+    @apply w-20 h-20 rounded-full flex items-center justify-center;
+}
+
+.logo {
+  @apply mx-auto;
+}
+

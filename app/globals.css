@@ -6,6 +6,7 @@
   --main-bg: #232325;
   --secondary-bg: #121212;
   --secondary-font: #a2a2a2;
+  --score-bg: #4E2A96
 }
 
 @theme inline {
@@ -28,7 +29,7 @@ body {
   height: 100dvh;
 }
 
-.central-part {
+.central-part, .central-part-score {
   background: var(--secondary-bg);
 }
 
@@ -45,4 +46,8 @@ body {
 
 .questions-container p span {
   color: var(--secondary-font);
+}
+
+.score{
+  background-color: var(--score-bg);
 }
