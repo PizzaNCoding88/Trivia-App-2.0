@@ -6,17 +6,28 @@ import Logo from "../../public/assets/images/logo.png";
 import { useQuiz } from "../context/QuizContext";
 import { shuffleArray } from "../utils/shuffleArray";
 import { decodeHtml } from "../utils/decodeHTML";
+import { useRouter } from "next/navigation";
 
 const Quiz = () => {
-  const [questions] = useQuiz();
+  const [
+  questions,
+  setQuestions,
+  setCorrectAnswers,
+  setWrongAnswers,
+  correctAnswers,
+  wrongAnswers
+] = useQuiz();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
-  const [wrongAnswer, setWrongAnswer] = useState(false);
+  // const [wrongAnswer, setWrongAnswer] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [disableButtons, setDisableButtons] = useState(false);
   const [timer, setTimer] = useState(30);
   const [noQuestionSelected, setNoQuestionSelected] = useState(false);
+  // const [correctAnswers, setCorrectAnswers] = useState(0);
+  // const [wrongAnswers, setWrongAnswers] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     if (timer === 0) {
@@ -60,8 +71,10 @@ const Quiz = () => {
       setSelectedAnswer(i);
       if (shuffledAnswers[i] === quiz[currentIndex].correct_answer) {
         setIsCorrect(true);
+        setCorrectAnswers(correctAnswers + 1);
       } else {
         setIsCorrect(false);
+        setWrongAnswers(wrongAnswers + 1);
       }
     }
 
@@ -71,6 +84,7 @@ const Quiz = () => {
       if (currentIndex + 1 >= quiz.length) {
         setIsFinished(true);
         setTimer(0);
+        router.push("/scores")
       } else {
         setCurrentIndex(currentIndex + 1);
         setSelectedAnswer(null);
