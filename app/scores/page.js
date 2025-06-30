@@ -19,7 +19,7 @@ const Results = () => {
           </div>
           <div className='completed'>
             <h1>Quiz Completed</h1>
-          <p>Here's how you did</p>
+          <p>Here&apos;s how you did</p>
           </div>
           <div className='score-container'>
             <div className='score'>

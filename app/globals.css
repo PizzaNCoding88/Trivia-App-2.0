@@ -51,3 +51,7 @@ body {
 .score{
   background-color: var(--score-bg);
 }
+
+.completed p{
+  color: var(--secondary-font);
+}
