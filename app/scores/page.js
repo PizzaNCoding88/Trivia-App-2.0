@@ -2,7 +2,7 @@
 import React from 'react'
 import { useQuiz } from "../context/QuizContext";
 
-const results = () => {
+const Results = () => {
  const [questions, setQuestions, setCorrectAnswers,setWrongAnswers, correctAnswers, wrongAnswers] = useQuiz();
   return (
     <div>
@@ -12,4 +12,4 @@ const results = () => {
   )
 }
 
-export default results
+export default Results
