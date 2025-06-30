@@ -3,7 +3,7 @@ import React from 'react'
 import { useQuiz } from "../context/QuizContext";
 
 const Results = () => {
- const [questions, setQuestions, setCorrectAnswers,setWrongAnswers, correctAnswers, wrongAnswers] = useQuiz();
+ const [,,,, correctAnswers, wrongAnswers] = useQuiz();
   return (
     <div>
       <div className='text-white'>correct answers: {correctAnswers}</div>
