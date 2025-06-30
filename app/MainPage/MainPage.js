@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import "./MainPage.css";
 import Image from "next/image";
 import Logo from "../../public/assets/images/logo.png";
@@ -31,22 +31,36 @@ const MainPage = () => {
   }
 
   async function startGame(questionsNumber, category, difficulty) {
-    if (!questionsNumber || !category || !difficulty) {
+    if (
+      !questionsNumber ||
+      questionsNumber < 1 ||
+      difficulty === undefined ||
+      difficulty === null ||
+      difficulty === "" ||
+      category === undefined ||
+      category === null ||
+      category === ""
+    ) {
+      alert("Select a parameter");
       setQuestionsNumber(true);
-    } else {
-      const url = `https://opentdb.com/api.php?amount=${questionsNumber}&category=${category}&difficulty=${difficulty}&type=multiple`;
-      console.log(url);
-      try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`);
-        }
-        const json = await response.json();
-        setQuestions(json.results);
-        router.push("/quiz");
-      } catch (error) {
-        console.error(error.message);
+      return;
+    }
+
+    let url = `https://opentdb.com/api.php?amount=${questionsNumber}&difficulty=${difficulty}&type=multiple`;
+    if (category !== "" && category !== null && category !== undefined) {
+      url += `&category=${category}`;
+    }
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
       }
+      const json = await response.json();
+      setQuestions(json.results);
+      router.push("/quiz");
+    } catch (error) {
+      console.error(error.message);
     }
   }
 

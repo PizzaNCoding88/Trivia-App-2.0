@@ -1,5 +1,5 @@
 @import "tailwindcss";
 
 .button {
-  @apply flex justify-center items-center bg-green-300 px-3 py-4 rounded-xl h-10 text-white text-center;
+  @apply flex justify-center items-center bg-green-300 px-3 py-4 rounded-xl h-10 text-white text-center cursor-pointer;
 }
