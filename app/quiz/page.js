@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import Image from "next/image";
 import "./page.css";
 import Logo from "../../public/assets/images/logo.png";
@@ -9,6 +9,7 @@ import { decodeHtml } from "../utils/decodeHTML";
 import { useRouter } from "next/navigation";
 
 const Quiz = () => {
+  const timerRef = useRef(null);
   const [
   questions,
   setQuestions,
@@ -33,10 +34,10 @@ const Quiz = () => {
       return;
     }
 
-    const interval = setInterval(() => {
+    timerRef.current = setInterval(() => { 
       setTimer((prev) => prev - 1);
     }, 1000);
-    return () => clearInterval(interval);
+    return () => clearInterval(timerRef.current); 
   }, [timer]);
 
   if (timer === 0 && selectedAnswer === null) {
@@ -65,8 +66,10 @@ const Quiz = () => {
     console.log(questions[currentIndex]);
 
     function handleAnswer(i) {
+      clearInterval(timerRef.current);
       setDisableButtons(true);
       setSelectedAnswer(i);
+      
       if (shuffledAnswers[i] === quiz[currentIndex].correct_answer) {
         setIsCorrect(true);
         setCorrectAnswers(correctAnswers + 1);
