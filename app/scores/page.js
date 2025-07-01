@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 
 const Results = () => {
   const router = useRouter();
- const [questions,,,, correctAnswers, wrongAnswers, questionsTimes, setQuestionsTimes] = useQuiz();
+ const [questions, , , , correctAnswers, wrongAnswers, questionsTimes] = useQuiz();
  const totalTime = questionsTimes.reduce((acc, time) => acc + time, 0);
  const playAgain = () => {router.push('/')}
   return (
