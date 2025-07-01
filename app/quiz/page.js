@@ -19,14 +19,12 @@ const Quiz = () => {
 ] = useQuiz();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
-  // const [wrongAnswer, setWrongAnswer] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [disableButtons, setDisableButtons] = useState(false);
   const [timer, setTimer] = useState(30);
   const [noQuestionSelected, setNoQuestionSelected] = useState(false);
-  // const [correctAnswers, setCorrectAnswers] = useState(0);
-  // const [wrongAnswers, setWrongAnswers] = useState(0);
+  
   const router = useRouter();
 
   useEffect(() => {

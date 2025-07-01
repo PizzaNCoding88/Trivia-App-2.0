@@ -16,7 +16,7 @@ const MainPage = () => {
   const [selectedDifficulty, setSelectedDifficulty] = useState();
   const [category, setCategory] = useState();
   const [difficulty, setDifficulty] = useState();
-  const [, setQuestions] = useQuiz();
+  const [questions, setQuestions, setCorrectAnswers,setWrongAnswers, correctAnswers, wrongAnswers, questionsTimes, setQuestionsTimes] = useQuiz();
 
   function increaseQuestions() {
     if (questionsNumber >= 0 && questionsNumber < 50) {
@@ -31,6 +31,9 @@ const MainPage = () => {
   }
 
   async function startGame(questionsNumber, category, difficulty) {
+    setCorrectAnswers(0);
+    setWrongAnswers(0);
+    setQuestionsTimes([]);
     if (
       !questionsNumber ||
       questionsNumber < 1 ||
