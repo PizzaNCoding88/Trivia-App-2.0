@@ -55,3 +55,7 @@ body {
 .completed p{
   color: var(--secondary-font);
 }
+
+.correct-answers, .wrong-answers, .total-time, .accuracy{
+  background-color: var(--main-bg);
+}

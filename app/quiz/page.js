@@ -15,7 +15,7 @@ const Quiz = () => {
   setCorrectAnswers,
   setWrongAnswers,
   correctAnswers,
-  wrongAnswers
+  wrongAnswers,questionTimes, setQuestionsTimes
 ] = useQuiz();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
@@ -81,6 +81,7 @@ const Quiz = () => {
     function handleNext() {
       setDisableButtons(!disableButtons);
       setTimer(30);
+      setQuestionsTimes([...questionTimes, 30 - timer]);
       if (currentIndex + 1 >= quiz.length) {
         setIsFinished(true);
         setTimer(0);

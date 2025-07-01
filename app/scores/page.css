@@ -9,6 +9,9 @@
 .image-container {
   @apply w-full;
 }
+.logo {
+  @apply mx-auto;
+}
 
 .trophy-container {
   @apply flex justify-center items-center;
@@ -37,7 +40,30 @@
     @apply w-20 h-20 rounded-full flex items-center justify-center;
 }
 
-.logo {
-  @apply mx-auto;
+.stats-container{
+  @apply grid grid-cols-2 grid-rows-2 gap-4 ;
 }
 
+.correct-answers, .wrong-answers, .total-time, .accuracy{
+    @apply rounded-lg p-2;
+}
+
+.stats-container > div > p:first-child {
+  @apply text-white;
+}
+
+.correct-answers p:nth-child(2){
+  @apply text-green-500
+}
+
+.wrong-answers p:nth-child(2){
+  @apply text-red-500
+}
+
+.total-time p:nth-child(2){
+  @apply text-blue-500
+}
+
+.accuracy p:nth-child(2){
+  @apply text-yellow-500
+}

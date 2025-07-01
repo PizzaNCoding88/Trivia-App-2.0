@@ -5,9 +5,14 @@ import Logo from "../../public/assets/images/logo.png";
 import Image from "next/image";
 import Trophy from "../../public/assets/images/trophy.png";
 import './page.css';
+import Buttons from '@/components/buttons/Buttons';
+import { useRouter } from 'next/navigation';
 
 const Results = () => {
- const [questions,,,, correctAnswers, wrongAnswers] = useQuiz();
+  const router = useRouter();
+ const [questions,,,, correctAnswers, wrongAnswers, questionsTimes, setQuestionsTimes] = useQuiz();
+ const totalTime = questionsTimes.reduce((acc, time) => acc + time, 0);
+ const playAgain = () => {router.push('/')}
   return (
     <div className="container">
         <div className="image-container">
@@ -26,8 +31,29 @@ const Results = () => {
               <p>{correctAnswers}/{questions.length}</p>
             </div>
           </div>
+          <div className='stats-container'>
+            <div className='correct-answers'>
+              <p>Correct</p>
+              <p>{correctAnswers}</p>
+            </div>
+            <div className='wrong-answers'>
+              <p>Incorrect</p>
+              <p>{wrongAnswers}</p>
+            </div>
+            <div className='total-time'>
+              <p>Time</p>
+              <p>{totalTime}s</p>
+            </div>
+            <div className='accuracy'>
+              <p>Accuracy</p>
+              <p>{((correctAnswers/questions.length)*100).toFixed(1)}%</p>
+            </div>            
+          </div>
+          <div className='button-container'>
+            <Buttons name={'Play again'} click={playAgain} />
+          </div>
         </div>
-        /
+        
       </div>
   )
 }

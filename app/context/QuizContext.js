@@ -8,8 +8,9 @@ export function QuizProvider({ children }) {
    const [questions, setQuestions] = useState([]);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [wrongAnswers, setWrongAnswers] = useState(0);
+  const [questionsTimes, setQuestionsTimes] = useState([]);
   return (
-    <QuizContext.Provider value={[questions, setQuestions, setCorrectAnswers,setWrongAnswers, correctAnswers, wrongAnswers]}>
+    <QuizContext.Provider value={[questions, setQuestions, setCorrectAnswers,setWrongAnswers, correctAnswers, wrongAnswers, questionsTimes, setQuestionsTimes]}>
       {children}
     </QuizContext.Provider>
   );
